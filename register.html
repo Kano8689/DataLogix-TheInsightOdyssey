@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafd;
+    }
+    form {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #ede7f6;
+      border-radius: 8px;
+    }
+    h2 {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 7px;
+      margin-top: 4px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 18px;
+      padding: 10px 24px;
+      background: #673ab7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #311b92;
+    }
+    /* Style for banner image */
+    .banner {
+      max-width: 400px;
+      display: block;
+      margin: 28px auto 12px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px #ccb8f4;
+    }
+    #fullscreenModal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.816);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6em;
+      flex-direction: column;
+    }
+    #fullscreenModal img {
+      width: 150px; margin-bottom: 28px; border-radius: 20px;
+    }
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+  <img src="assets/eventBanner.png" alt="Banner" class="banner">
+  <form id="registrationForm" autocomplete="off">
+    <h2>Registration Form</h2>
+    <label>Department Name:</label>
+    <input type="text" name="department" required pattern="[A-Za-z ]{2,50}" title="Only letters and spaces, min 2 chars" />
+    <label>Program Name:</label>
+    <input type="text" name="program" required pattern="[A-Za-z0-9\- ]{2,50}" title="Letters, numbers, dashes or spaces, min 2 chars" />
+    <label>Team Name:</label>
+    <input type="text" name="team" required pattern="[A-Za-z0-9\- ]{2,50}" title="Letters, numbers, dashes or spaces, min 2 chars" />
+    <label>Member-1 Name:</label>
+    <input type="text" name="member1_name" required pattern="[A-Za-z ]{2,50}" title="Only letters and spaces, min 2 chars" />
+    <label>Member-1 Enrollment Number:</label>
+    <input type="text" name="member1_enrollment" required />
+    <label>Member-1 Mobile Number:</label>
+    <input type="text" name="member1_mobile" required pattern="[6-9]\d{9}" title="10 digit Indian mobile number, starts with 6/7/8/9" />
+    <label>Member-2 Name:</label>
+    <input type="text" name="member2_name" required pattern="[A-Za-z ]{2,50}" title="Only letters and spaces, min 2 chars" />
+    <label>Member-2 Enrollment Number:</label>
+    <input type="text" name="member2_enrollment" required />
+    <label>Member-2 Mobile Number:</label>
+    <input type="text" name="member2_mobile" required pattern="[6-9]\d{9}" title="10 digit Indian mobile number, starts with 6/7/8/9" />
+    <label>Knowledge of Analytical Tools for Graphs:</label>
+    <select name="analytical_tools" required>
+      <option value="">Select</option>
+      <option value="Power BI">Power BI</option>
+      <option value="Tabular">Tabular</option>
+    </select>
+    <label>Proficiency in Data Preprocessing:</label>
+    <select name="data_preprocessing" required>
+      <option value="">Select</option>
+      <option value="No">No</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+    <label>Proficiency in Machine Learning:</label>
+    <select name="ml_proficiency" required>
+      <option value="">Select</option>
+      <option value="No">No</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+    <label>Any Other Specific Tools Known:</label>
+    <input type="text" name="other_tools" />
+    <button type="submit">Register</button>
+  </form>
+
+  <div id="fullscreenModal">
+    <!-- <img src="image.jpg" alt="Submitting"> -->
+    <span id="modalMessage">Submitting your registration…</span>
+  </div>
+  <script>
+    document.getElementById('fullscreenModal').style.display = 'none';
+//     document.getElementById('fullscreenModal').style.display = 'flex';
+//     document.getElementById('modalMessage').innerText = "Submitting your registration… Please wait.";
+//     document.getElementById('modalMessage').style.color = "rgba(0, 230, 230, 1)";
+
+
+
+    // Fill in with your Firebase config!
+    const firebaseConfig = {
+      apiKey: "AIzaSyDjsJSC5tOgqy0F1RsmThJZobFPy1vcUkU",
+      authDomain: "datalogix-theinsightodyssey.firebaseapp.com",
+      databaseURL: "https://datalogix-theinsightodyssey-default-rtdb.firebaseio.com/",
+      projectId: "datalogix-theinsightodyssey",
+      storageBucket: "datalogix-theinsightodyssey.appspot.com",
+      messagingSenderId: "515212831661",
+      appId: "1:515212831661:web:6aaa8e84ef5956a1a70f24"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('fullscreenModal').style.display = "flex";
+      document.getElementById('modalMessage').innerText = "Submitting your registration… Please wait.";
+      document.getElementById('modalMessage').style.color = "rgba(0, 230, 230, 1)"
+      const form = e.target;
+      const data = {
+        department: form.department.value.trim(),
+        program: form.program.value.trim(),
+        team: form.team.value.trim(),
+        member1_name: form.member1_name.value.trim(),
+        member1_enrollment: form.member1_enrollment.value.trim(),
+        member1_mobile: form.member1_mobile.value.trim(),
+        member2_name: form.member2_name.value.trim(),
+        member2_enrollment: form.member2_enrollment.value.trim(),
+        member2_mobile: form.member2_mobile.value.trim(),
+        analytical_tools: form.analytical_tools.value,
+        data_preprocessing: form.data_preprocessing.value,
+        ml_proficiency: form.ml_proficiency.value,
+        other_tools: form.other_tools.value.trim() === "" ? "null" : form.other_tools.value.trim()
+      };
+      firebase.database().ref('registrations').push(data)
+        .then(() => {
+          localStorage.setItem('recentTeam', data.team);
+          window.location.href = "index.html";
+        })
+        .catch((error) => {
+          document.getElementById('modalMessage').innerText = "Error: " + error.message;
+          setTimeout(() => {
+          }, 3000);
+        });
+    });
+  </script>
+</body>
+</html>
