@@ -15,21 +15,34 @@
       padding: 20px;
       background: #ede7f6;
       border-radius: 8px;
+      box-shadow: 0 2px 14px #e2d3fd;
     }
     h2 {
       margin-bottom: 18px;
     }
     label {
+      margin-top: 22px;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      color: #35226a;
       display: block;
-      margin-top: 16px;
-      font-weight: bold;
     }
     input, select {
-      width: 100%;
-      padding: 7px;
-      margin-top: 4px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
+      width: 95%;
+      padding: 11px;
+      margin-top: 6px;
+      border: 1.5px solid #a394e7;
+      border-radius: 7px;
+      font-size: 1.05em;
+      background: #f4f2fa;
+      box-shadow: 0 1px 4px #dad5ec;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: #673ab7;
+      box-shadow: 0 2px 8px #ccb8f4;
+      outline: none;
+      background: #ede7f6;
     }
     button {
       margin-top: 18px;
@@ -46,7 +59,9 @@
     }
     /* Style for banner image */
     .banner {
-      max-width: 400px;
+      width: 100%;
+      max-width: 530px;
+      height: auto;
       display: block;
       margin: 28px auto 12px auto;
       border-radius: 12px;
@@ -167,7 +182,7 @@
         analytical_tools: form.analytical_tools.value,
         data_preprocessing: form.data_preprocessing.value,
         ml_proficiency: form.ml_proficiency.value,
-        other_tools: form.other_tools.value.trim() === "" ? "null" : form.other_tools.value.trim()
+        other_tools: form.other_tools.value.trim() === "" ? "N/A" : form.other_tools.value.trim()
       };
       firebase.database().ref('registrations').push(data)
         .then(() => {
