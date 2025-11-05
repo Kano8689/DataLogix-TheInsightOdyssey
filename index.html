@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <form id="registrationForm">
+        <h2>Registration Form</h2>
+        
+        <label>Department Name:</label>
+        <input type="text" name="department" required />
+
+        <label>Program Name:</label>
+        <input type="text" name="program" required />
+
+        <label>Team Name:</label>
+        <input type="text" name="team" required />
+
+        <label>Member 1 Name & Enrollment Number:</label>
+        <input type="text" name="member1" required />
+
+        <label>Member 2 Name & Enrollment Number:</label>
+        <input type="text" name="member2" required />
+
+        <label>Mobile Number of Member 1:</label>
+        <input type="text" name="mobile1" required />
+
+        <label>Mobile Number of Member 2:</label>
+        <input type="text" name="mobile2" required />
+
+        <label>Knowledge of Analytical Tools for Power BI Graphs:</label>
+        <select name="analytical_tools" required>
+            <option value="">Select</option>
+            <option value="Power BI">Power BI</option>
+            <option value="Tabular">Tabular</option>
+        </select>
+
+        <label>Proficiency in Data Preprocessing:</label>
+        <select name="data_preprocessing" required>
+            <option value="">Select</option>
+            <option value="No">No</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+
+        <label>Proficiency in Machine Learning:</label>
+        <select name="ml_proficiency" required>
+            <option value="">Select</option>
+            <option value="No">No</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+
+        <label>Any Other Specific Tools Known:</label>
+        <input type="text" name="other_tools" />
+
+        <button type="submit">Register</button>
+    </form>
+    <script src="app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+</body>
+</html>
