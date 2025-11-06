@@ -5,119 +5,141 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Insight Odyssey | Welcome</title>
 <style>
+  :root {
+    --card-pad-mobile: 4vw;
+    --card-pad-desktop: 38px;
+    --radius-mobile: 10px;
+    --radius-desktop: 18px;
+  }
   body {
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #ecf4fa 0%, #e3f6fc 100%);
+    background: linear-gradient(135deg,#ecf4fa 0%,#e3f6fc 100%);
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #252f3f;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 1vw;
+    box-sizing: border-box;
+  }
+  h1, .subtitle {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
   }
   h1 {
     color: #14bbc6;
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    margin-top: 40px;
-    margin-bottom: 0;
-    text-align: center;
+    font-size: clamp(1.3rem, 7vw, 2.8rem);
     font-weight: 700;
+    margin-bottom: 0;
+    word-break: break-word;
+    line-height: 1.1;
   }
   .subtitle {
-    font-size: clamp(1rem, 2.6vw, 1.3rem);
-    text-align: center;
+    font-size: clamp(0.9rem,4vw,1.3rem);
     color: #5887a3;
-    margin-bottom: 36px;
-    margin-top: 12px;
+    margin-bottom: 18px;
     font-weight: 400;
+    line-height: 1.3;
   }
   .card {
     background: #fff;
-    max-width: 600px;
-    width: 96vw;
-    margin: 0 auto;
-    padding: 3vw 5vw 5vw 5vw;
-    border-radius: 18px;
-    box-shadow: 0 6px 32px rgba(20, 187, 198, 0.09), 0 1.5px 7px rgba(32, 111, 146, 0.07);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 18px auto;
+    padding: var(--card-pad-desktop);
+    border-radius: var(--radius-desktop);
+    box-shadow: 0 6px 32px rgba(20,187,198,0.09), 0 1.5px 7px rgba(32,111,146,0.07);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+    overflow: visible;
   }
   .section-title {
     display: flex;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.11rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    gap: 12px;
+    margin-bottom: 0.2rem;
+    gap: 10px;
     color: #21374c;
+    line-height: 1.2;
+    flex-wrap: wrap;
   }
   .section-title .icon {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #14bbc6;
     margin-bottom: 2px;
+    min-width: 22px;
+    text-align: center;
   }
-  .guidelines-title .icon {
-    color: #39c094;
-  }
+  .guidelines-title .icon { color: #39c094; }
   .org-text {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     color: #4b7e97;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    line-height: 1.3;
+    word-break: break-word;
   }
   .guidelines-list {
     margin: 0;
-    padding-left: 16px;
-    font-size: 1rem;
+    padding-left: 17px;
+    font-size: 0.97rem;
     color: #3d5166;
-    line-height: 2;
+    line-height: 1.6;
+    word-break: break-word;
   }
   .primary-btn {
     display: block;
-    font-size: 1.15rem;
+    font-size: 1.04rem;
     background: #14bbc6;
     color: #fff;
     text-align: center;
     font-weight: 500;
     border: none;
     border-radius: 7px;
-    padding: 13px 0;
-    margin-top: 22px;
+    padding: 11px 0;
+    margin-top: 14px;
     cursor: pointer;
     outline: none;
     width: 100%;
-    box-shadow: 0 2px 5px rgba(20, 187, 198, 0.09);
-    letter-spacing: 0.07em;
+    box-shadow: 0 2px 5px rgba(20,187,198,0.08);
+    letter-spacing: .04em;
     text-decoration: none;
     transition: background 0.2s;
     touch-action: manipulation;
   }
-  .primary-btn:hover, .primary-btn:focus {
+  .primary-btn:focus, .primary-btn:hover {
     background: #11adc0;
   }
-  @media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
-    }
-    .subtitle {
-      font-size: 1rem;
-    }
+  @media (max-width: 540px) {
     .card {
       max-width: 99vw;
-      padding: 6vw 2vw 8vw 2vw;
+      padding: var(--card-pad-mobile);
+      border-radius: var(--radius-mobile);
     }
-    .section-title, .org-text {
-      font-size: 1rem;
+    h1 { font-size: 1.4rem; }
+    .subtitle { font-size: 1rem;}
+    .section-title, .org-text { font-size: 0.96rem; }
+    .guidelines-list { font-size: .91rem; padding-left: 10px;}
+    .primary-btn { font-size: 0.93rem; padding: 10px 0; }
+  }
+  @media (max-width:380px) {
+    .card {
+      padding: 2vw;
     }
-    .guidelines-list {
-      font-size: 0.98rem;
-      padding-left: 12px;
-    }
+    .guidelines-list,
+    .section-title,
+    .org-text,
     .primary-btn {
-      font-size: 0.98rem;
-      padding: 12px 0;
+      font-size: .88rem;
     }
+    h1 { font-size: 1.13rem;}
+    .subtitle { font-size: .88rem;}
   }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
