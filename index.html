@@ -1,84 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Insight Odyssey - Registration</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f3eafe; }
-    .mainbox {
-      max-width: 500px;
-      margin: 45px auto 0 auto;
-      background: #ede7f6;
-      border-radius: 16px;
-      box-shadow: 0 2px 15px #c3b9ef;
-      padding: 36px 22px 24px 22px;
-      text-align: center;
-    }
-    .mainbox h1 {
-      margin-bottom: 6px;
-      color: #4b3272;
-      font-size: 2.3em;
-      font-family: Georgia, 'Times New Roman', serif;
-    }
-    .mainbox h3 {
-      margin: 0 0 20px 0;
-      font-weight: 400;
-      color: #32325b;
-      font-family: Trocchi;
-    }
-    .mainbox h5 {
-      margin: 0 0 20px 0;
-      font-weight: 600;
-      color: #69489d;
-      font-family: Maiden;
-    }
-    .mainbox img { max-width: 220px; border-radius: 14px; margin-top: 9px; margin-bottom: 19px; }
-    .guidelines-title { color: #b2690b; margin-top: 18px; margin-bottom: 8px; }
-    .guidelines {
-      text-align: left;
-      padding: 13px 18px;
-      background: #fff8e1;
-      border-radius: 10px;
-      margin-bottom: 16px;
-      color: #6d4c41;
-      font-size: 1.05em;
-      border: 1px solid #eddba6;
-    }
-    .guidelines ul { margin: 9px 0 0 16px; }
-    .guidelines li { margin-bottom: 3px; font-family: Helvetica Now; }
-    .btn-register {
-      background: #673ab7;
-      color: #fff;
-      border: none;
-      border-radius: 7px;
-      padding: 16px 42px;
-      font-size: 1.2em;
-      margin-top: 22px;
-      cursor: pointer;
-      transition: background 0.2s;
-      font-weight: bold;
-    }
-    .btn-register:hover { background: #311b92; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Responsive Animated Slider with Loading Bar</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    background: #121212;
+    font-family: Arial, sans-serif;
+  }
+  .image-container {
+    position: relative;
+    width: 90vw;         /* responsive width relative to viewport */
+    max-width: 500px;    /* max width to restrict on large screens */
+    aspect-ratio: 1 / 1; /* make container square */
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .image-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    top: 0;
+    left: 0;
+  }
+  .image-container img.active {
+    opacity: 1;
+  }
+  .loading-bar-container {
+    width: 90vw;
+    max-width: 500px;
+    height: 15px;
+    background: #444;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #00e676;
+  }
+  .loading-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #00ffc8, #00e676);
+    border-radius: 15px;
+    transition: width 0.1s linear;
+  }
+</style>
 </head>
 <body>
-  <div class="mainbox">
-    <h1>The Insight Odyssey</h1>
-    <h3><i>"A journey from data to discovery"</i></h3>
-    <h5><i>"Organized by DataLogix Club"</i></h5>
-    <img src="assets/eventBanner.png" alt="Event Banner" />
-    <div class="guidelines-title"><strong>Guidelines:</strong></div>
-    <div class="guidelines">
-      <ul>
-        <li>Bring your laptop (fully charged).</li>
-        <li>Event time: XX:xx to YY:yy.</li>
-        <li>Present in room no: ABC at XX:xx – 00:30.</li>
-        <li>Two members per team compulsory.</li>
-        <li>Please ensure all team and personal details are correct before submitting.</li>
-      </ul>
-    </div>
-    <button class="btn-register" onclick="window.location.href='register.html'">Register</button>
+  <div class="image-container">
+    <img src="assets/datalogix_logo.png" alt="DataLogix Club Logo" class="active"/>
+    <!-- <img src="assets/amity_logo.png" alt="Amity Logo"/> -->
+    <img src="assets/event_logo.png" alt="Event Logo"/>
   </div>
+  <div class="loading-bar-container">
+    <div class="loading-bar" id="loadingBar"></div>
+  </div>
+
+<script>
+  const images = document.querySelectorAll('.image-container img');
+  const loadingBar = document.getElementById('loadingBar');
+  let currentIndex = 0;
+  const totalDuration = 3000;  // 9 seconds total for full loading
+  const imageSwitchInterval = totalDuration / images.length;
+  let width = 0;
+  const loadingBarSpeed = 10; // ms per update
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+  }
+
+  function updateLoadingBar() {
+    width += (100 / (totalDuration / loadingBarSpeed));
+    if(width > 100) width = 100;
+    loadingBar.style.width = width + '%';
+  }
+
+  function startAnimation() {
+    let sliderTimer = setInterval(() => {
+      currentIndex++;
+      if (currentIndex >= images.length) {
+        clearInterval(sliderTimer);
+      } else {
+        showImage(currentIndex);
+      }
+    }, imageSwitchInterval);
+
+    let loadingTimer = setInterval(() => {
+      updateLoadingBar();
+      if (width >= 100) {
+        clearInterval(loadingTimer);
+        // Redirect when loading bar is full
+        window.location.href = 'welcome.html';
+      }
+    }, loadingBarSpeed);
+  }
+
+  startAnimation();
+</script>
 </body>
 </html>

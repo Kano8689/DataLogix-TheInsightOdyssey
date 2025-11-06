@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Insight Odyssey | Welcome</title>
+<style>
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ecf4fa 0%, #e3f6fc 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #252f3f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    color: #14bbc6;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: 700;
+  }
+  .subtitle {
+    font-size: clamp(1rem, 2.6vw, 1.3rem);
+    text-align: center;
+    color: #5887a3;
+    margin-bottom: 36px;
+    margin-top: 12px;
+    font-weight: 400;
+  }
+  .card {
+    background: #fff;
+    max-width: 600px;
+    width: 96vw;
+    margin: 0 auto;
+    padding: 3vw 5vw 5vw 5vw;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(20, 187, 198, 0.09), 0 1.5px 7px rgba(32, 111, 146, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    gap: 12px;
+    color: #21374c;
+  }
+  .section-title .icon {
+    font-size: 1.3rem;
+    color: #14bbc6;
+    margin-bottom: 2px;
+  }
+  .guidelines-title .icon {
+    color: #39c094;
+  }
+  .org-text {
+    margin-bottom: 6px;
+    color: #4b7e97;
+    font-size: 1.05rem;
+  }
+  .guidelines-list {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 1rem;
+    color: #3d5166;
+    line-height: 2;
+  }
+  .primary-btn {
+    display: block;
+    font-size: 1.15rem;
+    background: #14bbc6;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    border: none;
+    border-radius: 7px;
+    padding: 13px 0;
+    margin-top: 22px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(20, 187, 198, 0.09);
+    letter-spacing: 0.07em;
+    text-decoration: none;
+    transition: background 0.2s;
+    touch-action: manipulation;
+  }
+  .primary-btn:hover, .primary-btn:focus {
+    background: #11adc0;
+  }
+  @media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+    }
+    .card {
+      max-width: 99vw;
+      padding: 6vw 2vw 8vw 2vw;
+    }
+    .section-title, .org-text {
+      font-size: 1rem;
+    }
+    .guidelines-list {
+      font-size: 0.98rem;
+      padding-left: 12px;
+    }
+    .primary-btn {
+      font-size: 0.98rem;
+      padding: 12px 0;
+    }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <h1>The Insight Odyssey</h1>
+  <div class="subtitle">A journey from data to discovery</div>
+  <div class="card">
+    <div class="section-title">
+      <span class="icon"><i class="fas fa-users"></i></span>
+      Event Organizers
+    </div>
+    <div class="org-text">Organized by DataLogix Club From MSC Data Science.</div>
+    <div class="section-title guidelines-title">
+      <span class="icon"><i class="fas fa-trophy"></i></span>
+      Guidelines
+    </div>
+    <ul class="guidelines-list">
+      <li>We kindly request all participants to bring a fully charged laptop.</li>
+      <li>Each team should have exactly two members.</li>
+      <li>The event will be held in Room 214.</li>
+      <li>The event runs from 11:00 AM to 1:00 PM.</li>
+      <li>Please arrive at the venue by 10:30 AM, at least 30 minutes before the start time.</li>
+      <li>Double-check that your team and personal details are accurate before submitting.</li>
+    </ul>
+    <a href="registration.html" class="primary-btn">
+      <i class="fas fa-star"></i>  Go to Register
+    </a>
+  </div>
+</body>
+</html>

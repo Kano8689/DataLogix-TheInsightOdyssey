@@ -5,87 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registration Form</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fafafd;
-    }
+    body { font-family: Arial, sans-serif; background: #fafafd; }
     form {
-      max-width: 500px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #ede7f6;
-      border-radius: 8px;
-      box-shadow: 0 2px 14px #e2d3fd;
+      max-width: 500px; margin: 30px auto; padding: 20px; background: #ede7f6;
+      border-radius: 8px; box-shadow: 0 2px 14px #e2d3fd;
     }
-    h2 {
-      margin-bottom: 18px;
-    }
-    label {
-      margin-top: 22px;
-      letter-spacing: 0.04em;
-      font-weight: 600;
-      color: #35226a;
-      display: block;
-    }
+    h2 { margin-bottom: 18px; }
+    label { margin-top: 22px; letter-spacing: 0.04em; font-weight: 600; color: #35226a; display: block; }
     input, select {
-      width: 95%;
-      padding: 11px;
-      margin-top: 6px;
-      border: 1.5px solid #a394e7;
-      border-radius: 7px;
-      font-size: 1.05em;
-      background: #f4f2fa;
-      box-shadow: 0 1px 4px #dad5ec;
-      transition: border 0.2s, box-shadow 0.2s;
+      width: 95%; padding: 11px; margin-top: 6px; border: 1.5px solid #a394e7;
+      border-radius: 7px; font-size: 1.05em; background: #f4f2fa;
+      box-shadow: 0 1px 4px #dad5ec; transition: border 0.2s, box-shadow 0.2s;
     }
     input:focus, select:focus {
-      border-color: #673ab7;
-      box-shadow: 0 2px 8px #ccb8f4;
-      outline: none;
+      border-color: #673ab7; box-shadow: 0 2px 8px #ccb8f4; outline: none;
       background: #ede7f6;
     }
     button {
-      margin-top: 18px;
-      padding: 10px 24px;
-      background: #673ab7;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
+      margin-top: 18px; padding: 10px 24px; background: #673ab7;
+      color: #fff; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;
     }
-    button:hover {
-      background: #311b92;
-    }
-    /* Style for banner image */
+    button:hover { background: #311b92; }
     .banner {
-      width: 100%;
-      max-width: 530px;
-      height: auto;
-      display: block;
-      margin: 28px auto 12px auto;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px #ccb8f4;
+      width: 100%; max-width: 530px; height: auto; display: block;
+      margin: 28px auto 12px auto; border-radius: 12px; box-shadow: 0 2px 10px #ccb8f4;
     }
     #fullscreenModal {
-      display: none;
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.816);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6em;
-      flex-direction: column;
+      display: none; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+      z-index: 9999; background: rgba(0, 0, 0, 0.816); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6em; flex-direction: column;
     }
-    #fullscreenModal img {
-      width: 150px; margin-bottom: 28px; border-radius: 20px;
-    }
+    #fullscreenModal img { width: 150px; margin-bottom: 28px; border-radius: 20px; }
   </style>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
@@ -138,20 +89,11 @@
     <input type="text" name="other_tools" />
     <button type="submit">Register</button>
   </form>
-
   <div id="fullscreenModal">
-    <!-- <img src="image.jpg" alt="Submitting"> -->
     <span id="modalMessage">Submitting your registration…</span>
   </div>
   <script>
     document.getElementById('fullscreenModal').style.display = 'none';
-//     document.getElementById('fullscreenModal').style.display = 'flex';
-//     document.getElementById('modalMessage').innerText = "Submitting your registration… Please wait.";
-//     document.getElementById('modalMessage').style.color = "rgba(0, 230, 230, 1)";
-
-
-
-    // Fill in with your Firebase config!
     const firebaseConfig = {
       apiKey: "AIzaSyDjsJSC5tOgqy0F1RsmThJZobFPy1vcUkU",
       authDomain: "datalogix-theinsightodyssey.firebaseapp.com",
