@@ -371,6 +371,7 @@
         ml_proficiency: document.getElementById('ml_proficiency').value.trim(),
         other_tools: document.getElementById('other_tools').value.trim() || "N/A"
       };
+      localStorage.setItem('registrationData', JSON.stringify(data));
 
       // Save to Firebase
       await database.ref('registration').push(data);
