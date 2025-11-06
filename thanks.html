@@ -3,198 +3,267 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Registration Success</title>
-<style>
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg,#ecf4fa 0%,#e3f6fc 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .main-container {
-    max-width: 600px;
-    width: 97vw;
-    margin: 38px auto 0 auto;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 5px 28px rgba(20, 187, 198, 0.09), 0 1px 4px rgba(32,111,146,0.07);
-    padding: 0 0 30px 0;
-    box-sizing: border-box;
-  }
-  .success-icon {
-    display: flex; justify-content: center; align-items: center; margin-top: 32px;
-  }
-  .success-icon i {
-    color: #14bbc6;
-    font-size: 3.6rem;
-    background: #eaf7f8;
-    border-radius: 50%;
-    padding: 14px 15px;
-    box-shadow: 0 0 8px #14bbc640;
-  }
-  .success-title {
-    color: #14bbc6;
-    text-align: center;
-    font-size: 2.0rem;
-    font-weight: 700;
-    margin-top: 12px;
-    margin-bottom: 6px;
-    letter-spacing: 0.02em;
-  }
-  .success-desc {
-    color: #6687a3;
-    text-align: center;
-    margin-bottom: 26px;
-    font-size: 1.1rem;
-    font-weight: 400;
-  }
-  .details-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2.5px 8px rgba(20,187,198,0.02);
-    margin: 0 20px 22px 20px;
-    border: 1px solid #e6f1fa;
-    padding: 20px 22px 18px 22px;
-  }
-  .details-title {
-    font-size: 1.08rem;
-    font-weight: 600;
-    color: #34495e;
-    margin-bottom: 12px;
-    letter-spacing: 0.01em;
-  }
-  .details-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 12px;
-  }
-  .details-table th, .details-table td {
-    padding: 5px 0;
-    text-align: left;
-    font-size: 1rem;
-    color: #2d3e50;
-    vertical-align: top;
-  }
-  .details-table tr:not(:last-child) td {
-    border-bottom: 1px solid #e8eaf0;
-  }
-  .section-label {
-    font-weight: 600; color: #157d9e; padding-top: 8px;
-  }
-  .notes-card {
-    background: #edfaff;
-    border-radius: 8px;
-    border: 1px solid #aeeff7;
-    margin: 0 20px 24px 20px;
-    padding: 14px 20px;
-    color: #11436a;
-    font-size: 0.97rem;
-    box-sizing: border-box;
-  }
-  .notes-card ul { margin: 8px 0 0 0; padding-left: 18px;}
-  .notes-card li { margin-bottom: 6px;}
-  .btn-back {
-    display: block;
-    width: 160px;
-    margin: 22px auto 0 auto;
-    background: #14bbc6;
-    color: #fff;
-    border: none;
-    border-radius: 7px;
-    padding: 11px 0;
-    font-size: 1.12rem;
-    font-weight: 500;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 2px 7px rgba(20,187,198,0.09);
-    transition: background 0.2s;
-  }
-  .btn-back:hover, .btn-back:focus { background: #119cb0;}
-  @media (max-width: 650px) {
-    .main-container {max-width: 99vw;}
-    .details-card, .notes-card {margin: 0 2vw;}
-    .success-title {font-size: 1.3rem;}
-    .details-table th, .details-table td {font-size: 0.96rem;}
-    .btn-back {font-size: 0.97rem; padding: 9px 0;}
-  }
-</style>
+<title>Registration Summary</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+  margin:0;
+  min-height:100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(125deg, #e9f9ff 10%, #e1f4e7 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-confirm {
+  max-width: 900px;
+  width: 99vw;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 40px rgba(20,187,198,0.13), 0 2px 9px rgba(32,111,146,.07);
+  margin: 44px auto 24px auto;
+  overflow: hidden;
+  border: 1.4px solid #e1f2fa;
+}
+
+.data-section {
+  padding: 26px 54px 26px 54px; /* generous left/right padding */
+  border-bottom: 1.2px solid #eaf3f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8fcff;
+}
+
+.data-pair-label {
+  padding-left: 7px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #4078ac;
+  min-width: 210px;
+}
+
+.data-pair-value {
+  padding-left: 18px;
+  font-size: 1.17rem;
+  color: #18334d;
+  font-weight: 500;
+}
+
+@media (max-width:900px){
+  .card-confirm{max-width:99vw;}
+  .data-section{padding:17px 2vw;}
+  .data-pair-label{min-width:120px;}
+  .data-pair-value{padding-left:4px;}
+}
+
+.header-success {
+  background: linear-gradient(90deg,#14bbc6 0,#19d39e 100%);
+  color: #fff;
+  padding: 36px 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 45% 22px;
+  border-bottom-right-radius: 45% 22px;
+  box-shadow: 0 3px 18px #14bbc644;
+}
+.header-success .fa-circle-check {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 2px 7px #fff4);
+  margin-bottom: 14px;
+}
+.header-success .success-title {
+  font-size:2.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.header-success .subtitle {
+  font-size:1.23rem;
+  opacity:0.95;
+  margin-bottom: 0;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.sec-label {
+  font-size: 1.11rem;
+  font-weight: 600;
+  color: #14bbc6;
+  margin-top:20px;
+  display: flex; align-items: center; gap:13px;
+}
+.sec-label .badge {
+  background: #10e3b6;
+  color: #fff;
+  font-weight:700;
+  font-size:.79rem;
+  border-radius: 7px;
+  padding: .6px 11px;
+  margin-left: 8px;
+  letter-spacing:.04em;
+}
+.data-pair-row {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.skills-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 70px;
+  margin-bottom: 2px;
+}
+.skills-flex-row .data-pair-row {
+  flex: 1 1 220px;
+  align-items: baseline;
+}
+.important-box {
+  margin: 20px 0 14px 0;
+  background: #f4fefe;
+  color: #137581;
+  border-left: 7px solid #a6efe2;
+  border-radius: 8px;
+  padding: 18px 34px;
+  box-shadow:0 1px 7px #10e3b61a;
+  font-size: 1.08rem;
+}
+.important-box b {color:#14bbc6;}
+.important-box ul {margin:8px 0 0 18px;}
+.important-box li {margin-bottom:3.5px;}
+.btn-main {
+  margin:34px auto 24px auto; display:block;
+  background:#14bbc6;
+  color:#fff;
+  padding:13px 0; border:0;
+  border-radius: 11px;
+  font-size:1.23rem;
+  font-weight:700;
+  width:222px;
+  cursor:pointer;
+  letter-spacing: .02em;
+  box-shadow: 0 0 11px #14bbc63c;
+  text-decoration:none;
+  text-align:center;
+  transition: background .17s;
+}
+.btn-main:hover {background: #10b681;}
+@media (max-width:600px){
+  .header-success{padding:22px 0 10px 0;}
+  .data-section{padding:15px 4vw;}
+  .skills-flex-row{gap:8px 8px;}
+  .important-box{padding:10px 7vw;}
+  .btn-main{width:99vw;}
+}
+</style>
 </head>
 <body>
-  <div class="main-container">
-    <div class="success-icon">
-      <i class="fas fa-check-circle"></i>
+  <div class="card-confirm">
+    <div class="header-success">
+      <i class="fa-solid fa-circle-check"></i>
+      <div class="success-title">Registration Successful!</div>
+      <div class="subtitle">Your team has been registered.</div>
     </div>
-    <div class="success-title">Registration Successful!</div>
-    <div class="success-desc">Your team has been successfully registered for the event</div>
-    <div class="details-card">
-      <div class="details-title">Registration Details</div>
-      <table class="details-table">
-        <tr>
-          <td class="section-label">Department Name</td>
-          <td>fed</td>
-          <td class="section-label">Program Name</td>
-          <td>ads</td>
-        </tr>
-        <tr>
-          <td class="section-label">Team Name</td>
-          <td>dsa</td>
-        </tr>
-        <!-- Member 1 -->
-        <tr><td colspan="4" class="section-label">Member 1</td></tr>
-        <tr>
-          <td>Name</td>
-          <td>sa</td>
-          <td>Enrollment Number</td>
-          <td>das</td>
-        </tr>
-        <tr>
-          <td>Mobile Number</td>
-          <td>7777777777</td>
-        </tr>
-        <!-- Member 2 -->
-        <tr><td colspan="4" class="section-label">Member 2</td></tr>
-        <tr>
-          <td>Name</td>
-          <td>egwvd</td>
-          <td>Enrollment Number</td>
-          <td>fasdc</td>
-        </tr>
-        <tr>
-          <td>Mobile Number</td>
-          <td>7777777777</td>
-        </tr>
-        <!-- Technical Skills -->
-        <tr><td colspan="4" class="section-label">Technical Skills</td></tr>
-        <tr>
-          <td>Analytical Tools</td>
-          <td>Tableau</td>
-          <td>Data Preprocessing</td>
-          <td>Intermediate</td>
-        </tr>
-        <tr>
-          <td>ML Proficiency</td>
-          <td>Beginner</td>
-          <td>Other Tools</td>
-          <td>swag</td>
-        </tr>
-      </table>
+    <div class="data-section">
+      <div class="sec-label">
+        <span><i class="fa fa-user-group"></i> Basic Info</span> <span class="badge">TEAM</span>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Department Name</div>
+        <div class="data-pair-value" id="department"></div>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Program Name</div>
+        <div class="data-pair-value" id="program"></div>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Team Name</div>
+        <div class="data-pair-value" id="team"></div>
+      </div>
     </div>
-    <div class="notes-card">
-      <b><i class="fas fa-info-circle"></i> Important Notes</b>
+    <div class="data-section">
+      <div class="sec-label"><i class="fa fa-user"></i> Member 1</div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Name</div>
+        <div class="data-pair-value" id="mem1_name"></div>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Enrollment Number</div>
+        <div class="data-pair-value" id="mem1_enno"></div>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Mobile Number</div>
+        <div class="data-pair-value" id="mem1_mono"></div>
+      </div>
+    </div>
+    <div class="data-section">
+      <div class="sec-label"><i class="fa fa-user"></i> Member 2</div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Name</div>
+        <div class="data-pair-value" id="mem2_name"></div>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Enrollment Number</div>
+        <div class="data-pair-value" id="mem2_enno"></div>
+      </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Mobile Number</div>
+        <div class="data-pair-value" id="mem2_mono"></div>
+      </div>
+    </div>
+    <div class="data-section">
+      <div class="sec-label"><i class="fa fa-gears"></i> Technical Skills</div>
+      <div class="skills-flex-row">
+        <div class="data-pair-row">
+          <div class="data-pair-label">Analytical Tools</div>
+          <div class="data-pair-value" id="analysis_toools"></div>
+        </div>
+        <div class="data-pair-row">
+          <div class="data-pair-label">Data Preprocessing</div>
+          <div class="data-pair-value" id="data_preprocessing"></div>
+        </div>
+        <div class="data-pair-row">
+          <div class="data-pair-label">ML Proficiency</div>
+          <div class="data-pair-value" id="ml_proficiency"></div>
+        </div>
+        <div class="data-pair-row">
+          <div class="data-pair-label">Other Tools</div>
+          <div class="data-pair-value" id="other_tools"></div>
+        </div>
+      </div>
+    </div>
+    <div class="important-box">
+      <b>Important Notes</b>
       <ul>
-        <li>Please save or screenshot these registration details for your records</li>
-        <li>You will receive further communication on your registered mobile numbers</li>
-        <li>Result will be announced within 15 minutes before the event start time</li>
-        <li>Bring valid ID cards for verification</li>
-        <li>Contact organizers immediately if any details need correction</li>
+        <li>Save or screenshot these details for your records</li>
+        <li>Check your registered mobile for future communication</li>
+        <li>Results will be announced ~15min before event time</li>
+        <li>Bring valid ID card for verification</li>
+        <li>Contact organizers to correct registration mistakes</li>
       </ul>
     </div>
-    <a href="index.html" class="btn-back">&larr; Back to Home</a>
+    <a href="index.html" class="btn-main">&larr; Back to Home</a>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const data = JSON.parse(localStorage.getItem('registrationData'));
+      if(data){
+        document.getElementById('department').innerText = data.department || "";
+        document.getElementById('program').innerText = data.program || "";
+        document.getElementById('team').innerText = data.team || "";
+        document.getElementById('mem1_name').innerText = data.member1_name || "";
+        document.getElementById('mem1_enno').innerText = data.member1_enrollment || "";
+        document.getElementById('mem1_mono').innerText = data.member1_mobile || "";
+        document.getElementById('mem2_name').innerText = data.member2_name || "";
+        document.getElementById('mem2_enno').innerText = data.member2_enrollment || "";
+        document.getElementById('mem2_mono').innerText = data.member2_mobile || "";
+        document.getElementById('analysis_toools').innerText = data.analytical_tools || "";
+        document.getElementById('data_preprocessing').innerText = data.data_preprocessing || "";
+        document.getElementById('ml_proficiency').innerText = data.ml_proficiency || "";
+        document.getElementById('other_tools').innerText = data.other_tools || "";
+      }
+    });
+  </script>
 </body>
 </html>

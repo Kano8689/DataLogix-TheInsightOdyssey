@@ -349,25 +349,26 @@
     document.getElementById('overlay').style.display = 'flex';
     // Get all values
     const data = {
-      department: document.getElementById('department').value,
-      program: document.getElementById('program').value,
-      team: document.getElementById('team').value,
-      member1_name: document.getElementById('member1_name').value,
-      member1_enrollment: document.getElementById('member1_enrollment').value,
-      member1_mobile: document.getElementById('member1_mobile').value,
-      member2_name: document.getElementById('member2_name').value,
-      member2_enrollment: document.getElementById('member2_enrollment').value,
-      member2_mobile: document.getElementById('member2_mobile').value,
+      department: document.getElementById('department').value.trim(),
+      program: document.getElementById('program').value.trim(),
+      team: document.getElementById('team').value.trim(),
+      member1_name: document.getElementById('member1_name').value.trim(),
+      member1_enrollment: document.getElementById('member1_enrollment').value.trim(),
+      member1_mobile: document.getElementById('member1_mobile').value.trim(),
+      member2_name: document.getElementById('member2_name').value.trim(),
+      member2_enrollment: document.getElementById('member2_enrollment').value.trim(),
+      member2_mobile: document.getElementById('member2_mobile').value.trim(),
       analytical_tools: document.getElementById('analytical_tools').value,
-      data_preprocessing: document.getElementById('data_preprocessing').value,
-      ml_proficiency: document.getElementById('ml_proficiency').value,
-      other_tools: document.getElementById('other_tools').value
+      data_preprocessing: document.getElementById('data_preprocessing').value.trim(),
+      ml_proficiency: document.getElementById('ml_proficiency').value.trim(),
+      other_tools: document.getElementById('other_tools').value.trim() === '' ? "N/A" : document.getElementById('other_tools').value.trim()
     };
+    localStorage.setItem('registrationData', JSON.stringify(data));
 
     // 4. Push the data into Firebase under a "teams" node with a new unique key
     database.ref('registration').push(data)
       .then(() => {
-        alert("Registration successful!");
+        // alert("Registration successful!");
         document.getElementById('registrationForm').reset();
         window.location.href = 'thanks.html';
       })
