@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Registration Success</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg,#ecf4fa 0%,#e3f6fc 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-container {
+    max-width: 600px;
+    width: 97vw;
+    margin: 38px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 5px 28px rgba(20, 187, 198, 0.09), 0 1px 4px rgba(32,111,146,0.07);
+    padding: 0 0 30px 0;
+    box-sizing: border-box;
+  }
+  .success-icon {
+    display: flex; justify-content: center; align-items: center; margin-top: 32px;
+  }
+  .success-icon i {
+    color: #14bbc6;
+    font-size: 3.6rem;
+    background: #eaf7f8;
+    border-radius: 50%;
+    padding: 14px 15px;
+    box-shadow: 0 0 8px #14bbc640;
+  }
+  .success-title {
+    color: #14bbc6;
+    text-align: center;
+    font-size: 2.0rem;
+    font-weight: 700;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .success-desc {
+    color: #6687a3;
+    text-align: center;
+    margin-bottom: 26px;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  .details-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2.5px 8px rgba(20,187,198,0.02);
+    margin: 0 20px 22px 20px;
+    border: 1px solid #e6f1fa;
+    padding: 20px 22px 18px 22px;
+  }
+  .details-title {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+  .details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+  }
+  .details-table th, .details-table td {
+    padding: 5px 0;
+    text-align: left;
+    font-size: 1rem;
+    color: #2d3e50;
+    vertical-align: top;
+  }
+  .details-table tr:not(:last-child) td {
+    border-bottom: 1px solid #e8eaf0;
+  }
+  .section-label {
+    font-weight: 600; color: #157d9e; padding-top: 8px;
+  }
+  .notes-card {
+    background: #edfaff;
+    border-radius: 8px;
+    border: 1px solid #aeeff7;
+    margin: 0 20px 24px 20px;
+    padding: 14px 20px;
+    color: #11436a;
+    font-size: 0.97rem;
+    box-sizing: border-box;
+  }
+  .notes-card ul { margin: 8px 0 0 0; padding-left: 18px;}
+  .notes-card li { margin-bottom: 6px;}
+  .btn-back {
+    display: block;
+    width: 160px;
+    margin: 22px auto 0 auto;
+    background: #14bbc6;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 0;
+    font-size: 1.12rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 7px rgba(20,187,198,0.09);
+    transition: background 0.2s;
+  }
+  .btn-back:hover, .btn-back:focus { background: #119cb0;}
+  @media (max-width: 650px) {
+    .main-container {max-width: 99vw;}
+    .details-card, .notes-card {margin: 0 2vw;}
+    .success-title {font-size: 1.3rem;}
+    .details-table th, .details-table td {font-size: 0.96rem;}
+    .btn-back {font-size: 0.97rem; padding: 9px 0;}
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="main-container">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="success-title">Registration Successful!</div>
+    <div class="success-desc">Your team has been successfully registered for the event</div>
+    <div class="details-card">
+      <div class="details-title">Registration Details</div>
+      <table class="details-table">
+        <tr>
+          <td class="section-label">Department Name</td>
+          <td>fed</td>
+          <td class="section-label">Program Name</td>
+          <td>ads</td>
+        </tr>
+        <tr>
+          <td class="section-label">Team Name</td>
+          <td>dsa</td>
+        </tr>
+        <!-- Member 1 -->
+        <tr><td colspan="4" class="section-label">Member 1</td></tr>
+        <tr>
+          <td>Name</td>
+          <td>sa</td>
+          <td>Enrollment Number</td>
+          <td>das</td>
+        </tr>
+        <tr>
+          <td>Mobile Number</td>
+          <td>7777777777</td>
+        </tr>
+        <!-- Member 2 -->
+        <tr><td colspan="4" class="section-label">Member 2</td></tr>
+        <tr>
+          <td>Name</td>
+          <td>egwvd</td>
+          <td>Enrollment Number</td>
+          <td>fasdc</td>
+        </tr>
+        <tr>
+          <td>Mobile Number</td>
+          <td>7777777777</td>
+        </tr>
+        <!-- Technical Skills -->
+        <tr><td colspan="4" class="section-label">Technical Skills</td></tr>
+        <tr>
+          <td>Analytical Tools</td>
+          <td>Tableau</td>
+          <td>Data Preprocessing</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr>
+          <td>ML Proficiency</td>
+          <td>Beginner</td>
+          <td>Other Tools</td>
+          <td>swag</td>
+        </tr>
+      </table>
+    </div>
+    <div class="notes-card">
+      <b><i class="fas fa-info-circle"></i> Important Notes</b>
+      <ul>
+        <li>Please save or screenshot these registration details for your records</li>
+        <li>You will receive further communication on your registered mobile numbers</li>
+        <li>Result will be announced within 15 minutes before the event start time</li>
+        <li>Bring valid ID cards for verification</li>
+        <li>Contact organizers immediately if any details need correction</li>
+      </ul>
+    </div>
+    <a href="index.html" class="btn-back">&larr; Back to Home</a>
+  </div>
+</body>
+</html>
