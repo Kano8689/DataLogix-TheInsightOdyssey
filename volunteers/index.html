@@ -58,14 +58,19 @@
             </tbody>
       </table>
 
-      <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js">
+      <!-- SheetJS for Excel Export -->
+      <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+      <!-- ... your existing scripts and body ... -->
+
+      <script>
             document.getElementById('downloadExcel').addEventListener('click', () => {
                   const table = document.getElementById('dataTable');
                   const wb = XLSX.utils.table_to_book(table, { sheet: "Registrations" });
                   XLSX.writeFile(wb, 'Volunteers.xlsx');
             });
-
       </script>
+
 
 
       <script>
