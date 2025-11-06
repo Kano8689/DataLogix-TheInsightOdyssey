@@ -1,109 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Responsive Animated Slider with Loading Bar</title>
-<style>
-  body, html {
-    margin: 0; padding: 0; height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    background: #121212;
-    font-family: Arial, sans-serif;
-  }
-  .image-container {
-    position: relative;
-    width: 90vw;         /* responsive width relative to viewport */
-    max-width: 500px;    /* max width to restrict on large screens */
-    aspect-ratio: 1 / 1; /* make container square */
-    margin-bottom: 30px;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-  .image-container img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    top: 0;
-    left: 0;
-  }
-  .image-container img.active {
-    opacity: 1;
-  }
-  .loading-bar-container {
-    width: 90vw;
-    max-width: 500px;
-    height: 15px;
-    background: #444;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 10px #00e676;
-  }
-  .loading-bar {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, #00ffc8, #00e676);
-    border-radius: 15px;
-    transition: width 0.1s linear;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Animated Slider with Loading Bar</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #121212;
+      font-family: Arial, sans-serif;
+    }
+
+    .image-container {
+      position: relative;
+      width: 90vw;
+      /* responsive width relative to viewport */
+      max-width: 500px;
+      /* max width to restrict on large screens */
+      aspect-ratio: 1 / 1;
+      /* make container square */
+      margin-bottom: 30px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .image-container img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      top: 0;
+      left: 0;
+    }
+
+    .image-container img.active {
+      opacity: 1;
+    }
+
+    .loading-bar-container {
+      width: 90vw;
+      max-width: 500px;
+      height: 15px;
+      background: #444;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #00e676;
+    }
+
+    .loading-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #00ffc8, #00e676);
+      border-radius: 15px;
+      transition: width 0.1s linear;
+    }
+  </style>
 </head>
+
 <body>
   <div class="image-container">
-    <img src="assets/datalogix_logo.png" alt="DataLogix Club Logo" class="active"/>
+    <img src="assets/datalogix_logo.png" alt="DataLogix Club Logo" class="active" />
     <!-- <img src="assets/amity_logo.png" alt="Amity Logo"/> -->
-    <img src="assets/event_logo.png" alt="Event Logo"/>
+    <img src="assets/event_logo.png" alt="Event Logo" />
   </div>
   <div class="loading-bar-container">
     <div class="loading-bar" id="loadingBar"></div>
   </div>
 
-<script>
-  const images = document.querySelectorAll('.image-container img');
-  const loadingBar = document.getElementById('loadingBar');
-  let currentIndex = 0;
-  const totalDuration = 3000;  // 9 seconds total for full loading
-  const imageSwitchInterval = totalDuration / images.length;
-  let width = 0;
-  const loadingBarSpeed = 10; // ms per update
+  <script>
+    const images = document.querySelectorAll('.image-container img');
+    const loadingBar = document.getElementById('loadingBar');
+    let currentIndex = 0;
+    const totalDuration = 3000;  // 9 seconds total for full loading
+    const imageSwitchInterval = totalDuration / images.length;
+    let width = 0;
+    const loadingBarSpeed = 10; // ms per update
 
-  function showImage(index) {
-    images.forEach((img, i) => {
-      img.classList.toggle('active', i === index);
-    });
-  }
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
 
-  function updateLoadingBar() {
-    width += (100 / (totalDuration / loadingBarSpeed));
-    if(width > 100) width = 100;
-    loadingBar.style.width = width + '%';
-  }
+    function updateLoadingBar() {
+      width += (100 / (totalDuration / loadingBarSpeed));
+      if (width > 100) width = 100;
+      loadingBar.style.width = width + '%';
+    }
 
-  function startAnimation() {
-    let sliderTimer = setInterval(() => {
-      currentIndex++;
-      if (currentIndex >= images.length) {
-        clearInterval(sliderTimer);
-      } else {
-        showImage(currentIndex);
-      }
-    }, imageSwitchInterval);
+    function startAnimation() {
+      let sliderTimer = setInterval(() => {
+        currentIndex++;
+        if (currentIndex >= images.length) {
+          clearInterval(sliderTimer);
+        } else {
+          showImage(currentIndex);
+        }
+      }, imageSwitchInterval);
 
-    let loadingTimer = setInterval(() => {
-      updateLoadingBar();
-      if (width >= 100) {
-        clearInterval(loadingTimer);
-        // Redirect when loading bar is full
-        window.location.href = 'welcome.html';
-      }
-    }, loadingBarSpeed);
-  }
+      let loadingTimer = setInterval(() => {
+        updateLoadingBar();
+        if (width >= 100) {
+          clearInterval(loadingTimer);
+          // Redirect when loading bar is full
+          window.location.href = 'welcome.html';
+        }
+      }, loadingBarSpeed);
+    }
 
-  startAnimation();
-</script>
+    startAnimation();
+  </script>
 </body>
+
 </html>
+
+<!-- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDjsJSC5tOgqy0F1RsmThJZobFPy1vcUkU",
+    authDomain: "datalogix-theinsightodyssey.firebaseapp.com",
+    projectId: "datalogix-theinsightodyssey",
+    storageBucket: "datalogix-theinsightodyssey.firebasestorage.app",
+    messagingSenderId: "515212831661",
+    appId: "1:515212831661:web:6aaa8e84ef5956a1a70f24",
+    measurementId: "G-S92B9ZFC94"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const record = {
+    analytical_tools: "Power BI",
+    data_preprocessing: "Intermediate",
+    department: "AIIT",
+    member1_enrollment: "A001",
+    member1_mobile: "9876543210",
+    member1_name: "Krishnam Mavani",
+    member2_enrollment: "A005",
+    member2_mobile: "9087654321",
+    member2_name: "Sankha Saha",
+    ml_proficiency: "No",
+    other_tools: "",
+    program: "DS",
+    team: "NOVA"
+  };
+
+  const dbRef = firebase.database().ref("registration");
+  for (let i = 0; i < 20; i++) {
+    dbRef.push(record);
+  }
+</script> -->

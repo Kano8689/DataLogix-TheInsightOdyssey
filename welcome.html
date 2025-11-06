@@ -145,9 +145,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <h1>The Insight Odyssey</h1>
-  <div class="subtitle">A journey from data to discovery</div>
-  <div class="card">
+      
+      <h1>The Insight Odyssey</h1>
+      <div class="subtitle">A journey from data to discovery</div>
+      <div class="card">
+        <!-- <h2 id="registrationCount" style="color:#388ca7; font-size:1.22rem; font-weight:600; margin-bottom:15px;"></h2> -->
     <div class="section-title">
       <span class="icon"><i class="fas fa-users"></i></span>
       Event Organizers
@@ -171,3 +173,26 @@
   </div>
 </body>
 </html>
+
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDjsJSC5tOgqy0F1RsmThJZobFPy1vcUkU",
+  authDomain: "datalogix-theinsightodyssey.firebaseapp.com",
+  projectId: "datalogix-theinsightodyssey",
+  storageBucket: "datalogix-theinsightodyssey.firebasestorage.app",
+  messagingSenderId: "515212831661",
+  appId: "1:515212831661:web:6aaa8e84ef5956a1a70f24",
+  measurementId: "G-S92B9ZFC94"
+};
+firebase.initializeApp(firebaseConfig);
+const dbRef = firebase.database().ref("registration");
+
+dbRef.once("value", (snapshot) => {
+  let count = 0;
+  snapshot.forEach((child) => { count++; });
+//   document.getElementById('registrationCount').textContent = count === 0 ? "No teams have registered yet." : `${count} team${count>1?"s":""} already registered.`;
+});
+</script>
