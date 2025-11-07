@@ -280,13 +280,29 @@
           title="10 digit Indian mobile number, starts with 6/7/8/9" placeholder="10-digit mobile" />
       </div>
       <div class="card-section">
-        <div class="card-section-title"><i class="fas fa-tools"></i> Skills & Tools</div>
+        <!-- <div class="card-section-title"><i class="fas fa-tools"></i> Skills & Tools</div>
         <label for="analytical_tools">Knowledge of Analytical Tools for Graphs *</label>
         <select id="analytical_tools" name="analytical_tools" required>
           <option value="">Select</option>
           <option value="Power BI">Power BI</option>
           <option value="Tableau">Tableau</option>
+          <option value="Excel">Excel</option>
+          <option value="Others">Others</option>
+        </select> -->
+        <label for="analytical_tools">Knowledge of Analytical Tools for Graphs *</label>
+        <select id="analytical_tools" name="analytical_tools" required onchange="checkOtherSelection()">
+          <option value="">Select</option>
+          <option value="Power BI">Power BI</option>
+          <option value="Tableau">Tableau</option>
+          <option value="Excel">Excel</option>
+          <option value="Others">Others</option>
         </select>
+
+        <!-- Hidden input for others, initially hidden -->
+        <div id="other_input_container" style="display:none; margin-top:8px;">
+          <label for="other_analytical_tool">Please specify other tool(s):</label>
+          <input type="text" id="other_analytical_tool" name="other_analytical_tool" />
+        </div>
         <label for="data_preprocessing">Proficiency in Data Preprocessing *</label>
         <select id="data_preprocessing" name="data_preprocessing" required>
           <option value="">Select</option>
@@ -355,6 +371,17 @@
         return;
       }
 
+      var selectedTool = document.getElementById('analytical_tools').value.trim();
+      var storedValue;
+      if (selectedTool === "Others") {
+        var otherToolValue = document.getElementById('other_analytical_tool').value.trim();
+        storedValue = "Other - " + otherToolValue;
+      } else {
+        storedValue = selectedTool;
+      }
+
+
+
       // Collect form data
       const data = {
         department: document.getElementById('department').value.trim(),
@@ -366,7 +393,7 @@
         member2_name: document.getElementById('member2_name').value.trim(),
         member2_enrollment: document.getElementById('member2_enrollment').value.trim(),
         member2_mobile: document.getElementById('member2_mobile').value.trim(),
-        analytical_tools: document.getElementById('analytical_tools').value,
+        analytical_tools: storedValue,
         data_preprocessing: document.getElementById('data_preprocessing').value.trim(),
         ml_proficiency: document.getElementById('ml_proficiency').value.trim(),
         other_tools: document.getElementById('other_tools').value.trim() || "N/A"
@@ -387,4 +414,19 @@
   });
 </script>
 
+</script>
+
+<script>
+  function checkOtherSelection() {
+    var select = document.getElementById("analytical_tools");
+    var otherInputContainer = document.getElementById("other_input_container");
+    if (select.value === "Others") {
+      otherInputContainer.style.display = "block";
+      document.getElementById("other_analytical_tool").setAttribute("required", "required");
+    } else {
+      otherInputContainer.style.display = "none";
+      document.getElementById("other_analytical_tool").removeAttribute("required");
+      document.getElementById("other_analytical_tool").value = "";
+    }
+  }
 </script>
