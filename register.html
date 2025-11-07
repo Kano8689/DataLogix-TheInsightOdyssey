@@ -360,19 +360,27 @@
   document.getElementById('registrationForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
+
     try {
       document.getElementById('overlay').style.display = 'flex';
 
       // Check registration count
       const snapshot = await database.ref('registration').once('value');
-      if (snapshot.numChildren() >= 10) {
+
+      var totalTeamRegistered = snapshot.numChildren();
+      if (totalTeamRegistered >= 10) {
         document.getElementById('overlay').style.display = 'none';
-        alert("Event registration is overed, now you can not become participant of this event.");
+        alert("Event registration is over, you cannot participate in this event now.");
         return;
       }
 
       var selectedTool = document.getElementById('analytical_tools').value.trim();
       var storedValue;
+
+      var nextTeamNumber = totalTeamRegistered + 1;
+      var TeamId = "IO_Team" + (nextTeamNumber <= 9 ? "0" + nextTeamNumber : nextTeamNumber);
+      var currentTeamNo = 0;
+
       if (selectedTool === "Others") {
         var otherToolValue = document.getElementById('other_analytical_tool').value.trim();
         storedValue = "Other - " + otherToolValue;
@@ -387,6 +395,7 @@
         department: document.getElementById('department').value.trim(),
         program: document.getElementById('program').value.trim(),
         team: document.getElementById('team').value.trim(),
+        teamId: TeamId,
         member1_name: document.getElementById('member1_name').value.trim(),
         member1_enrollment: document.getElementById('member1_enrollment').value.trim(),
         member1_mobile: document.getElementById('member1_mobile').value.trim(),

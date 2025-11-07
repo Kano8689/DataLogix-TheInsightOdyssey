@@ -35,6 +35,7 @@
             <thead>
                   <tr>
                         <th rowspan="2">No.</th>
+                        <th rowspan="2">Team Id</th>
                         <th rowspan="2">Department Name</th>
                         <th rowspan="2">Program Name</th>
                         <th rowspan="2">Team Name</th>
@@ -95,6 +96,7 @@
                         const tr = document.createElement("tr");
                         tr.innerHTML = `
                     <td>${no++}</td>
+                    <td>${data.teamId || ""}</td>
                     <td>${data.department || ""}</td>
                     <td>${data.program || ""}</td>
                     <td>${data.team || ""}</td>

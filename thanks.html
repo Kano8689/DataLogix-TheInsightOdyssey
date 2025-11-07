@@ -181,6 +181,10 @@ body {
         <div class="data-pair-label">Team Name</div>
         <div class="data-pair-value" id="team"></div>
       </div>
+      <div class="data-pair-row">
+        <div class="data-pair-label">Team Id</div>
+        <div class="data-pair-value" id="teamId"></div>
+      </div>
     </div>
     <div class="data-section">
       <div class="sec-label"><i class="fa fa-user"></i> Member 1</div>
@@ -252,6 +256,7 @@ body {
         document.getElementById('department').innerText = data.department || "";
         document.getElementById('program').innerText = data.program || "";
         document.getElementById('team').innerText = data.team || "";
+        document.getElementById('teamId').innerText = data.teamId || "";
         document.getElementById('mem1_name').innerText = data.member1_name || "";
         document.getElementById('mem1_enno').innerText = data.member1_enrollment || "";
         document.getElementById('mem1_mono').innerText = data.member1_mobile || "";
