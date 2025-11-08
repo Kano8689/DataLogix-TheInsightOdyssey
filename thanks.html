@@ -1,163 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Registration Summary</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-body {
-  margin:0;
-  min-height:100vh;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(125deg, #e9f9ff 10%, #e1f4e7 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.card-confirm {
-  max-width: 900px;
-  width: 99vw;
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 8px 40px rgba(20,187,198,0.13), 0 2px 9px rgba(32,111,146,.07);
-  margin: 44px auto 24px auto;
-  overflow: hidden;
-  border: 1.4px solid #e1f2fa;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registration Summary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(125deg, #e9f9ff 10%, #e1f4e7 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-.data-section {
-  padding: 26px 54px 26px 54px; /* generous left/right padding */
-  border-bottom: 1.2px solid #eaf3f9;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #f8fcff;
-}
+    .card-confirm {
+      max-width: 900px;
+      width: 99vw;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 8px 40px rgba(20, 187, 198, 0.13), 0 2px 9px rgba(32, 111, 146, .07);
+      margin: 44px auto 24px auto;
+      overflow: hidden;
+      border: 1.4px solid #e1f2fa;
+    }
 
-.data-pair-label {
-  padding-left: 7px;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #4078ac;
-  min-width: 210px;
-}
+    .data-section {
+      padding: 26px 54px 26px 54px;
+      /* generous left/right padding */
+      border-bottom: 1.2px solid #eaf3f9;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f8fcff;
+    }
 
-.data-pair-value {
-  padding-left: 18px;
-  font-size: 1.17rem;
-  color: #18334d;
-  font-weight: 500;
-}
+    .data-pair-label {
+      padding-left: 7px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #4078ac;
+      min-width: 210px;
+    }
 
-@media (max-width:900px){
-  .card-confirm{max-width:99vw;}
-  .data-section{padding:17px 2vw;}
-  .data-pair-label{min-width:120px;}
-  .data-pair-value{padding-left:4px;}
-}
+    .data-pair-value {
+      padding-left: 18px;
+      font-size: 1.17rem;
+      color: #18334d;
+      font-weight: 500;
+    }
 
-.header-success {
-  background: linear-gradient(90deg,#14bbc6 0,#19d39e 100%);
-  color: #fff;
-  padding: 36px 0 18px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom-left-radius: 45% 22px;
-  border-bottom-right-radius: 45% 22px;
-  box-shadow: 0 3px 18px #14bbc644;
-}
-.header-success .fa-circle-check {
-  font-size: 3.5rem;
-  filter: drop-shadow(0 2px 7px #fff4);
-  margin-bottom: 14px;
-}
-.header-success .success-title {
-  font-size:2.3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: 0.04em;
-}
-.header-success .subtitle {
-  font-size:1.23rem;
-  opacity:0.95;
-  margin-bottom: 0;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-}
-.sec-label {
-  font-size: 1.11rem;
-  font-weight: 600;
-  color: #14bbc6;
-  margin-top:20px;
-  display: flex; align-items: center; gap:13px;
-}
-.sec-label .badge {
-  background: #10e3b6;
-  color: #fff;
-  font-weight:700;
-  font-size:.79rem;
-  border-radius: 7px;
-  padding: .6px 11px;
-  margin-left: 8px;
-  letter-spacing:.04em;
-}
-.data-pair-row {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2px;
-}
-.skills-flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 70px;
-  margin-bottom: 2px;
-}
-.skills-flex-row .data-pair-row {
-  flex: 1 1 220px;
-  align-items: baseline;
-}
-.important-box {
-  margin: 20px 0 14px 0;
-  background: #f4fefe;
-  color: #137581;
-  border-left: 7px solid #a6efe2;
-  border-radius: 8px;
-  padding: 18px 34px;
-  box-shadow:0 1px 7px #10e3b61a;
-  font-size: 1.08rem;
-}
-.important-box b {color:#14bbc6;}
-.important-box ul {margin:8px 0 0 18px;}
-.important-box li {margin-bottom:3.5px;}
-.btn-main {
-  margin:34px auto 24px auto; display:block;
-  background:#14bbc6;
-  color:#fff;
-  padding:13px 0; border:0;
-  border-radius: 11px;
-  font-size:1.23rem;
-  font-weight:700;
-  width:222px;
-  cursor:pointer;
-  letter-spacing: .02em;
-  box-shadow: 0 0 11px #14bbc63c;
-  text-decoration:none;
-  text-align:center;
-  transition: background .17s;
-}
-.btn-main:hover {background: #10b681;}
-@media (max-width:600px){
-  .header-success{padding:22px 0 10px 0;}
-  .data-section{padding:15px 4vw;}
-  .skills-flex-row{gap:8px 8px;}
-  .important-box{padding:10px 7vw;}
-  .btn-main{width:99vw;}
-}
-</style>
+    @media (max-width:900px) {
+      .card-confirm {
+        max-width: 99vw;
+      }
+
+      .data-section {
+        padding: 17px 2vw;
+      }
+
+      .data-pair-label {
+        min-width: 120px;
+      }
+
+      .data-pair-value {
+        padding-left: 4px;
+      }
+    }
+
+    .header-success {
+      background: linear-gradient(90deg, #14bbc6 0, #19d39e 100%);
+      color: #fff;
+      padding: 36px 0 18px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom-left-radius: 45% 22px;
+      border-bottom-right-radius: 45% 22px;
+      box-shadow: 0 3px 18px #14bbc644;
+    }
+
+    .header-success .fa-circle-check {
+      font-size: 3.5rem;
+      filter: drop-shadow(0 2px 7px #fff4);
+      margin-bottom: 14px;
+    }
+
+    .header-success .success-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .header-success .subtitle {
+      font-size: 1.23rem;
+      opacity: 0.95;
+      margin-bottom: 0;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .sec-label {
+      font-size: 1.11rem;
+      font-weight: 600;
+      color: #14bbc6;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .sec-label .badge {
+      background: #10e3b6;
+      color: #fff;
+      font-weight: 700;
+      font-size: .79rem;
+      border-radius: 7px;
+      padding: .6px 11px;
+      margin-left: 8px;
+      letter-spacing: .04em;
+    }
+
+    .data-pair-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .skills-flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 70px;
+      margin-bottom: 2px;
+    }
+
+    .skills-flex-row .data-pair-row {
+      flex: 1 1 220px;
+      align-items: baseline;
+    }
+
+    .important-box {
+      margin: 20px 0 14px 0;
+      background: #f4fefe;
+      color: #137581;
+      border-left: 7px solid #a6efe2;
+      border-radius: 8px;
+      padding: 18px 34px;
+      box-shadow: 0 1px 7px #10e3b61a;
+      font-size: 1.08rem;
+    }
+
+    .important-box b {
+      color: #14bbc6;
+    }
+
+    .important-box ul {
+      margin: 8px 0 0 18px;
+    }
+
+    .important-box li {
+      margin-bottom: 3.5px;
+    }
+
+    .btn-main {
+      margin: 34px auto 24px auto;
+      display: block;
+      background: #14bbc6;
+      color: #fff;
+      padding: 13px 0;
+      border: 0;
+      border-radius: 11px;
+      font-size: 1.23rem;
+      font-weight: 700;
+      width: 222px;
+      cursor: pointer;
+      letter-spacing: .02em;
+      box-shadow: 0 0 11px #14bbc63c;
+      text-decoration: none;
+      text-align: center;
+      transition: background .17s;
+    }
+
+    .btn-main:hover {
+      background: #10b681;
+    }
+
+    @media (max-width:600px) {
+      .header-success {
+        padding: 22px 0 10px 0;
+      }
+
+      .data-section {
+        padding: 15px 4vw;
+      }
+
+      .skills-flex-row {
+        gap: 8px 8px;
+      }
+
+      .important-box {
+        padding: 10px 7vw;
+      }
+
+      .btn-main {
+        width: 99vw;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="card-confirm">
     <div class="header-success">
@@ -240,19 +296,20 @@ body {
     <div class="important-box">
       <b>Important Notes</b>
       <ul>
-        <li>Save or screenshot these details for your records</li>
-        <li>Check your registered mobile for future communication</li>
-        <li>Results will be announced ~15min before event time</li>
-        <li>Bring valid ID card for verification</li>
-        <li>Contact organizers to correct registration mistakes</li>
+        <li>Please save or take a screenshot of these details for your reference.</li>
+        <li>Don’t forget to bring a valid ID card for verification.</li>
+        <li>Kindly check your registered mobile number for all future updates and communications.</li>
+        <li>Results will be announced approximately 15 minutes after the event happening.</li>
+        <li>Please reach out to the volunteers if there are any missing or incorrect details so they can be corrected promptly.</li>
+        <li>Please check your WhatsApp groups for updates. If you are not yet a member of the group, kindly contact the volunteers for assistance</li>
       </ul>
     </div>
     <a href="index.html" class="btn-main">&larr; Back to Home</a>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function () {
       const data = JSON.parse(localStorage.getItem('registrationData'));
-      if(data){
+      if (data) {
         document.getElementById('department').innerText = data.department || "";
         document.getElementById('program').innerText = data.program || "";
         document.getElementById('team').innerText = data.team || "";
@@ -271,4 +328,5 @@ body {
     });
   </script>
 </body>
+
 </html>
