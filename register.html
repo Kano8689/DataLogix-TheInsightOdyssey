@@ -368,7 +368,7 @@
       const snapshot = await database.ref('registration').once('value');
 
       var totalTeamRegistered = snapshot.numChildren();
-      if (totalTeamRegistered >= 10) {
+      if (totalTeamRegistered >= 11) {
         document.getElementById('overlay').style.display = 'none';
         alert("Event registration is over, you cannot participate in this event now.");
         return;
